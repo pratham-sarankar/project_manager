@@ -1,12 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_manager/app/data/repositories/project_repository.dart';
-import 'package:project_manager/app/data/widgets/description_field.dart';
 import 'package:project_manager/app/data/widgets/name_field.dart';
-import 'package:project_manager/app/data/widgets/options_field.dart';
-import 'package:project_manager/app/data/widgets/time_field.dart';
 import 'package:project_manager/app/modules/projects/add_project/controllers/add_project_controller.dart';
 
 class AddProjectView extends GetView<AddProjectController> {
@@ -47,48 +43,6 @@ class AddProjectView extends GetView<AddProjectController> {
                   if (name != null) {
                     controller.project.name = name;
                   }
-                },
-              ),
-              DescriptionField(
-                onSaved: (description) {
-                  if (description != null) {
-                    controller.project.description = description;
-                  }
-                },
-              ),
-              TimeField(
-                placeHolder: "Add Deadline",
-                prefixImagePath: 'assets/deadline.png',
-                onUpdate: (deadline) {
-                  if (deadline != null) {
-                    controller.project.deadline = Timestamp.fromDate(deadline);
-                  }
-                },
-              ),
-              StreamBuilder(
-                stream: ProjectRepository.instance.streamAllPriorities(),
-                builder: (context, snapshot) {
-                  return OptionsField(
-                    prefixImagePath: 'assets/priority.png',
-                    placeHolder: "Add Priority",
-                    onSelected: (selection) {
-                      controller.project.priority = selection;
-                    },
-                    options: snapshot.data ?? [],
-                  );
-                },
-              ),
-              StreamBuilder(
-                stream: ProjectRepository.instance.streamAllStatuses(),
-                builder: (context, snapshot) {
-                  return OptionsField(
-                    prefixImagePath: 'assets/status.png',
-                    placeHolder: "Add Status",
-                    onSelected: (selection) {
-                      controller.project.status = selection;
-                    },
-                    options: snapshot.data ?? [],
-                  );
                 },
               ),
             ],

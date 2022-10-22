@@ -46,62 +46,37 @@ class HomeView extends GetView<HomeController> {
               Heading(
                 title: "Projects",
                 actions: [
-                  PopupMenuButton(
-                    itemBuilder: (context) {
-                      return [
-                        PopupMenuItem(
-                          value: 'Priority',
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text('Priority'),
-                              const SizedBox(width: 6),
-                              if (controller.sortBy.value == 'Priority')
-                                Icon(Icons.check, size: Get.height * 0.032),
+                  GestureDetector(
+                    child: const Icon(Icons.more_horiz),
+                    onTap: () {
+                      showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoActionSheet(
+                            title: const Text('Projects'),
+                            cancelButton: CupertinoActionSheetAction(
+                              child: const Text(
+                                'Cancel',
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            actions: <CupertinoActionSheetAction>[
+                              CupertinoActionSheetAction(
+                                onPressed: () {
+                                  Get.toNamed(Routes.ALL_TASKS);
+                                },
+                                isDefaultAction: true,
+                                child: const Text(
+                                  'View All Tasks',
+                                ),
+                              ),
                             ],
-                          ),
-                        ),
-                        PopupMenuItem(
-                          value: 'Status',
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text('Status'),
-                              const SizedBox(width: 6),
-                              if (controller.sortBy.value == 'Status')
-                                Icon(Icons.check, size: Get.height * 0.032),
-                            ],
-                          ),
-                        ),
-                        PopupMenuItem(
-                          value: 'Deadline',
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text('Deadline'),
-                              const SizedBox(width: 6),
-                              if (controller.sortBy.value == 'Deadline')
-                                Icon(Icons.check, size: Get.height * 0.032),
-                            ],
-                          ),
-                        ),
-                      ];
-                    },
-                    onSelected: (value) {
-                      controller.sort(value: value);
-                    },
-                    padding: EdgeInsets.zero,
-                    child: const Icon(Icons.sort_rounded),
-                  ),
-                  const SizedBox(width: 10),
-                  Obx(
-                    () => GestureDetector(
-                        onTap: () {
-                          controller.tweekAscending();
+                          );
                         },
-                        child: controller.ascending.value
-                            ? const Icon(Icons.arrow_downward)
-                            : const Icon(Icons.arrow_upward)),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -122,35 +97,24 @@ class HomeView extends GetView<HomeController> {
                             ? controller.projects
                             : controller.projects.reversed)
                         .toList();
-                return Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Get.width * 0.065,
-                      vertical: Get.height * 0.0),
-                  child: GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: 2,
-                    crossAxisSpacing: Get.width * 0.04,
-                    mainAxisSpacing: Get.width * 0.04,
-                    childAspectRatio: 4 / 3,
-                    children: projects
-                        .map((project) => StreamBuilder<QuerySnapshot<Task>>(
-                            stream: TaskRepository.instance
-                                .streamAllByProjectId(project.id),
-                            builder: (context, taskSnapshot) {
-                              return ProjectTile(
-                                  project: project.data(),
-                                  projectId: project.id,
-                                  taskLength: taskSnapshot.data?.docs.length,
-                                  onTap: () {
-                                    Get.toNamed(
-                                      Routes.PROJECT,
-                                      parameters: {'projectId': project.id},
-                                    );
-                                  });
-                            }))
-                        .toList(),
-                  ),
+                return Column(
+                  children: projects
+                      .map((project) => StreamBuilder<QuerySnapshot<Task>>(
+                          stream: TaskRepository.instance
+                              .streamAllByProjectId(project.id),
+                          builder: (context, taskSnapshot) {
+                            return ProjectTile(
+                                project: project.data(),
+                                projectId: project.id,
+                                taskLength: taskSnapshot.data?.docs.length,
+                                onTap: () {
+                                  Get.toNamed(
+                                    Routes.PROJECT,
+                                    parameters: {'projectId': project.id},
+                                  );
+                                });
+                          }))
+                      .toList(),
                 );
               })
             ],

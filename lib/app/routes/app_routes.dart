@@ -12,11 +12,10 @@ abstract class Routes {
   static const ADD_TASK = _Paths.ADD_TASK;
   static const PROJECT_DETAILS = _Paths.PROJECT_DETAILS;
   static const PROFILE = _Paths.PROFILE;
-  static const PROJECT_PRIORITIES = _Paths.PROJECT_PRIORITIES;
-  static const PROJECT_STATUSES = _Paths.PROJECT_STATUSES;
   static const TASK_STATUS = _Paths.TASK_STATUS;
   static const TASK_PRIORITIES = _Paths.TASK_PRIORITIES;
   static const TASK_DETAILS = _Paths.TASK_DETAILS;
+  static const ALL_TASKS = _Paths.ALL_TASKS;
 }
 
 abstract class _Paths {
@@ -30,9 +29,8 @@ abstract class _Paths {
   static const ADD_TASK = '/add-task';
   static const PROJECT_DETAILS = '/project-details';
   static const PROFILE = '/profile';
-  static const PROJECT_PRIORITIES = '/project-priorities';
-  static const PROJECT_STATUSES = '/project-statuses';
   static const TASK_STATUS = '/task-status';
   static const TASK_PRIORITIES = '/task-priorities';
   static const TASK_DETAILS = '/task-details';
+  static const ALL_TASKS = '/all-tasks';
 }

@@ -33,7 +33,6 @@ class HomeController extends GetxController {
     projects = <QueryDocumentSnapshot<Project>>[].obs;
     ProjectRepository.instance.streamAll().listen((event) {
       projects.value = event.docs;
-      sort();
     });
     super.onInit();
   }
@@ -50,66 +49,5 @@ class HomeController extends GetxController {
 
   void tweekAscending() {
     ascending.value = !ascending.value;
-  }
-
-  void sortByPriority() async {
-    sortBy.value = 'Priority';
-    List<String> userPriorities =
-        await UserRepository.instance.fetchAllProjectPriorities();
-    projects.sort(
-      (a, b) {
-        var firstIndex = userPriorities.indexOf(a.data().priority);
-        var secondIndex = userPriorities.indexOf(b.data().priority);
-        if (firstIndex == -1 || secondIndex == -1) {
-          return 1;
-        } else {
-          return firstIndex.compareTo(secondIndex);
-        }
-      },
-    );
-    notifyChildrens();
-  }
-
-  void sortByStatus() async {
-    sortBy.value = 'Status';
-    List<String> userPriorities =
-        await UserRepository.instance.fetchAllProjectStatuses();
-    projects.sort(
-      (a, b) {
-        var firstIndex = userPriorities.indexOf(a.data().status);
-        var secondIndex = userPriorities.indexOf(b.data().status);
-        if (firstIndex == -1 || secondIndex == -1) {
-          return 1;
-        } else {
-          return firstIndex.compareTo(secondIndex);
-        }
-      },
-    );
-    notifyChildrens();
-  }
-
-  void sortByDeadline() {
-    projects.sort(
-      (a, b) {
-        var first = a.data().deadline ?? Timestamp.now();
-        var second = b.data().deadline ?? Timestamp.now();
-        return first.compareTo(second);
-      },
-    );
-    notifyChildrens();
-  }
-
-  void sort({String? value}) {
-    switch (value ?? sortBy.value) {
-      case ('Priority'):
-        sortByPriority();
-        break;
-      case ('Status'):
-        sortByStatus();
-        break;
-      case ('Deadline'):
-        sortByDeadline();
-        break;
-    }
   }
 }

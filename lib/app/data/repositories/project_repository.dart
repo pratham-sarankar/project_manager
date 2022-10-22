@@ -13,14 +13,6 @@ class ProjectRepository {
     return _provider.streamAll();
   }
 
-  Stream<List<String>> streamAllStatuses() {
-    return _provider.streamAllStatuses();
-  }
-
-  Stream<List<String>> streamAllPriorities() {
-    return _provider.streamAllPriorities();
-  }
-
   Future<void> insertOne(Project project) async {
     await _provider.insertOne(project);
     return;
@@ -36,13 +28,5 @@ class ProjectRepository {
 
   Future<void> updateById(Project project, String id) {
     return _provider.updateById(project, id);
-  }
-
-  Future<List<String>> fetchAllStatuses() async {
-    return _provider.fetchAllStatuses();
-  }
-
-  Future<List<String>> fetchAllPriorities() async {
-    return _provider.fetchAllPriorities();
   }
 }

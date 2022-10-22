@@ -68,38 +68,6 @@ class ProfileView extends GetView<ProfileController> {
             SizedBox(height: Get.height * 0.05),
             const Divider(height: 0.5, thickness: 0.5),
             ListTile(
-              title: Text("Project Priorities",
-                  style: TextStyle(
-                      color: Colors.black, fontSize: Get.height * 0.022)),
-              onTap: () {
-                Get.toNamed(Routes.PROJECT_PRIORITIES);
-              },
-              minLeadingWidth: 0,
-              horizontalTitleGap: 20,
-              leading: Icon(
-                Icons.reorder_rounded,
-                size: Get.height * 0.032,
-                color: Colors.black,
-              ),
-            ),
-            const Divider(height: 0.5, thickness: 0.5),
-            ListTile(
-              title: Text("Project Statuses",
-                  style: TextStyle(
-                      color: Colors.black, fontSize: Get.height * 0.022)),
-              onTap: () {
-                Get.toNamed(Routes.PROJECT_STATUSES);
-              },
-              minLeadingWidth: 0,
-              horizontalTitleGap: 20,
-              leading: Icon(
-                Icons.circle_outlined,
-                size: Get.height * 0.032,
-                color: Colors.black,
-              ),
-            ),
-            const Divider(height: 0.5, thickness: 0.5),
-            ListTile(
               title: Text("Task Priorities",
                   style: TextStyle(
                       color: Colors.black, fontSize: Get.height * 0.022)),

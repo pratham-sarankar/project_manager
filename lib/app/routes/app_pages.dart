@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:project_manager/app/modules/tasks/task_details/bindings/task_details_binding.dart';
-import 'package:project_manager/app/modules/tasks/task_details/views/task_details_view.dart';
+import 'package:project_manager/app/modules/projects/all_tasks/bindings/all_tasks_binding.dart';
+import 'package:project_manager/app/modules/projects/all_tasks/views/all_tasks_view.dart';
 
 import '../data/repositories/user_repository.dart';
 import '../modules/auth/get_started/bindings/get_started_binding.dart';
@@ -19,12 +19,10 @@ import '../modules/projects/project/bindings/project_binding.dart';
 import '../modules/projects/project/views/project_view.dart';
 import '../modules/projects/project_details/bindings/project_details_binding.dart';
 import '../modules/projects/project_details/views/project_details_view.dart';
-import '../modules/projects/project_priorities/bindings/project_priorities_binding.dart';
-import '../modules/projects/project_priorities/views/project_priorities_view.dart';
-import '../modules/projects/project_statuses/bindings/project_statuses_binding.dart';
-import '../modules/projects/project_statuses/views/project_statuses_view.dart';
 import '../modules/tasks/add_task/bindings/add_task_binding.dart';
 import '../modules/tasks/add_task/views/add_task_view.dart';
+import '../modules/tasks/task_details/bindings/task_details_binding.dart';
+import '../modules/tasks/task_details/views/task_details_view.dart';
 import '../modules/tasks/task_priorities/bindings/task_priorities_binding.dart';
 import '../modules/tasks/task_priorities/views/task_priorities_view.dart';
 import '../modules/tasks/task_status/bindings/task_status_binding.dart';
@@ -86,16 +84,6 @@ class AppPages {
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: _Paths.PROJECT_PRIORITIES,
-      page: () => const ProjectPrioritiesView(),
-      binding: ProjectPrioritiesBinding(),
-    ),
-    GetPage(
-      name: _Paths.PROJECT_STATUSES,
-      page: () => const ProjectStatusesView(),
-      binding: ProjectStatusesBinding(),
-    ),
-    GetPage(
       name: _Paths.TASK_STATUS,
       page: () => const TaskStatusView(),
       binding: TaskStatusBinding(),
@@ -109,6 +97,11 @@ class AppPages {
       name: _Paths.TASK_DETAILS,
       page: () => const TaskDetailsView(),
       binding: TaskDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_TASKS,
+      page: () => const AllTasksView(),
+      binding: AllTasksBinding(),
     ),
   ];
 }
