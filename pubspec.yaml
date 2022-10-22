@@ -1,0 +1,34 @@
+name: project_manager
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.5
+  google_fonts: ^3.0.1
+  firebase_core: ^2.0.0
+  cloud_firestore: ^4.0.1
+  flutter_native_splash: ^2.2.11
+  firebase_auth: ^4.0.1
+  google_sign_in: ^5.4.2
+  firebase_storage: ^11.0.2
+  image_picker:
+  get: ^4.6.5
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+flutter_native_splash:
+  color: "#42a5f5"

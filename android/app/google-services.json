@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "609754576167",
+    "project_id": "project-manager-a5d8a",
+    "storage_bucket": "project-manager-a5d8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609754576167:android:63e94f01ac5630f19c2502",
+        "android_client_info": {
+          "package_name": "sunil.app.project_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609754576167-vr5jeeel0qo2gos9epbrlamnocnkbcpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sunil.app.project_manager",
+            "certificate_hash": "d6cab43bc83e25a4889da13d4202fa317d0f6ad2"
+          }
+        },
+        {
+          "client_id": "609754576167-rm177j9mk741ip8svf984kd4v941i1hj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhXiQaSu_doa4sOxe8vFyXYDIygL0LH8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609754576167-rm177j9mk741ip8svf984kd4v941i1hj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
